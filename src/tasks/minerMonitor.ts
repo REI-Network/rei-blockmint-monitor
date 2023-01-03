@@ -73,7 +73,7 @@ async function _sendMessage(
   const message = `## MissBlock : \n > * Address : ${miner} \n > * Nodename : ${nodename} \n > * MissBlockNumber : ${missBlockNumber} \n > * MissCountLast24h : ${missCountLast24h} \n> * missCountLast1h : ${missCountLast1h} \n > * LastBlockMinted : ${lastBlockMinted} \n > * [View in ReiDAO](https://dao.rei.network/#/stake/validator?id=${miner}) \n
   This node missed 100 blocks last 24 hours, please check it.`;
 
-  const result = await axios.post(process.env.url, {
+  const result = await axios.post(process.env.alarm_bot_url, {
     msgtype: "markdown",
     markdown: {
       title: "BlockMonitor",

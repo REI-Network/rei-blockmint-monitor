@@ -5,6 +5,10 @@
 ```bash
 npm install
 ```
+
+## Check the .env file
+You need to `cp .env.example .env` and fill your own config including the `database_connection` and `alarm_bot_url`.
+If you don't want to use the alarm bot, you can delete it and also you can change alarm logic in `src/tasks/minerMonitor.ts`.
 ## Usage
 ```bash
 npm run start
@@ -32,7 +36,8 @@ npm run start
 ```
 #### Miner
 ```json
-{
+Miner.init(
+  {
     miner: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -55,7 +60,8 @@ npm run start
 
 #### MissRecord
 ```json
-{
+MissRecord.init(
+  {
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
@@ -69,6 +75,41 @@ npm run start
     },
     round: {
       type: DataTypes.INTEGER,
+    },
+    timestamp: {
+      type: DataTypes.INTEGER,
+    },
+  }
+```
+
+#### SlashRecord
+
+```json
+SlashRecord.init(
+  {
+    slashBlockHeight: {
+      type: DataTypes.INTEGER,
+    },
+    duplicateVoteHeight: {
+      type: DataTypes.INTEGER,
+    },
+    reason: {
+      type: DataTypes.STRING,
+    },
+    validator: {
+      type: DataTypes.STRING,
+    },
+    slashBlockTimestamp: {
+      type: DataTypes.INTEGER,
+    },
+    slashAmount: {
+      type: DataTypes.DECIMAL(65, 0),
+    },
+    voteAJson: {
+      type: DataTypes.JSONB,
+    },
+    voteBJson: {
+      type: DataTypes.JSONB,
     },
   }
 ```
